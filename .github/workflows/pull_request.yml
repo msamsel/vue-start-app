@@ -14,6 +14,7 @@ jobs:
       test: ${{ steps.filter.outputs.test }}
     steps:
       - name: Checkout
+        
         uses: actions/checkout@v2
       - name: Filter
         uses: dorny/paths-filter@v2
@@ -23,7 +24,7 @@ jobs:
             linter:
               - 'src/**'
             test:
-              - 'src/**'
+              - '!(tests/**)'
 
   test:
     needs: [setup, changes]
