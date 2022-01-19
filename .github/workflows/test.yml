@@ -4,7 +4,7 @@ on: push
 
 jobs:
   setup:
-    uses: msamsel/vue-start-app/.github/workflows/setup-project.yml@master
+    uses: msamsel/vue-start-app/.github/workflows/setup.yml@master
 
   test:
     name: Tests
