@@ -13,6 +13,8 @@ jobs:
       linter: ${{ steps.filter.outputs.linter }}
       test: ${{ steps.filter.outputs.test }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Filter
         uses: dorny/paths-filter@v2
         id: filter
