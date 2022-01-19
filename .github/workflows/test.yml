@@ -26,6 +26,9 @@ jobs:
           path: ${{ github.workspace }}
           key: ${{ runner.os }}-${{ github.sha }}
 
+      - name: Sleep
+        run: sleep 5s
+
       - name: List
         run: ls ${{ github.workspace }}
       
