@@ -1,0 +1,34 @@
+name: Test
+
+on: push
+
+jobs:
+  setup:
+    uses: msamsel/vue-start-app/.github/workflows/setup-project.yml@master
+
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '16'
+
+      # - name: Restore cache
+      #   id: restore-cache
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ${{ github.workspace }}
+      #     key: ${{ runner.os }}-${{ github.sha }}
+
+      # - name: Check if cache exists
+      #   if: steps.restore-cache.outputs.cache-hit != 'true'
+      #   run: exit 1
+
+      - name: Run tests
+        run: yarn test
