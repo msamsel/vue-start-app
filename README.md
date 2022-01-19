@@ -1,4 +1,4 @@
-# hello-world
+# Vue start app
 
 ## Project setup
 ```
