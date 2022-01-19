@@ -22,12 +22,12 @@ jobs:
       #   with:
       #     node-version: '16'
 
-      # - name: Restore cache
-      #   id: restore-cache
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: ${{ github.workspace }}
-      #     key: ${{ runner.os }}-${{ github.sha }}
+      - name: Restore cache
+        id: restore-cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}
+          key: ${{ runner.os }}-${{ github.sha }}
 
       # - name: Check if cache exists
       #   if: steps.restore-cache.outputs.cache-hit != 'true'

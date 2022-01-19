@@ -19,3 +19,13 @@ jobs:
       - name: Install dependencies
         run: yarn install --prefer-offline
 
+      - name: List
+        run: ls ${{ github.workspace }}
+
+      - name: Cache installed project
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}
+          key: ${{ runner.os }}-${{ github.sha }}
+
+
