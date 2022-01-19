@@ -23,7 +23,7 @@ jobs:
         id: restore-cache
         uses: actions/cache@v2
         with:
-          path: ${{ github.workspace }}
+          path: ${{ github.workspace }}/*
           key: ${{ runner.os }}-${{ github.sha }}
 
       - name: Sleep
