@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Job ID
+        run: echo '${{ job.container.id	}}'
+
       - name: Checkout
         uses: actions/checkout@v2
 
