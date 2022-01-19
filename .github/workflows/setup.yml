@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Job ID
-        run: echo '${{ job.container.id	}}'
+        run: echo '${{ job.setup_project.id	}}'
 
       - name: Checkout
         uses: actions/checkout@v2

@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Job ID
-        run: echo '${{ job.container.id	}}'
+        run: echo '${{ job.test.id	}}'
 
       # - name: Checkout
       #   uses: actions/checkout@v2
@@ -37,5 +37,5 @@ jobs:
       #   if: steps.restore-cache.outputs.cache-hit != 'true'
       #   run: exit 1
 
-      - name: Run lint
+      - name: Run lintgg
         run: yarn lint
