@@ -3,7 +3,15 @@ name: Lint
 on: push
 
 jobs:
+  wait:
+    name: Wait
+    runs-on: ubuntu-latest
+    steps:
+      - name: wait
+        run: sleep 20s
+
   setup:
+    needs: wait
     uses: msamsel/vue-start-app/.github/workflows/setup.yml@master
 
   test:
