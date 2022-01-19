@@ -1,0 +1,16 @@
+name: Pull request
+
+on: push
+
+jobs:
+  setup:
+    uses: msamsel/vue-start-app/.github/workflows/setup.yml@master
+
+  test:
+    needs: setup
+    uses: msamsel/vue-start-app/.github/workflows/test.yml@master
+
+  lint:
+    needs: setup
+    uses: msamsel/vue-start-app/.github/workflows/lint.yml@master
+

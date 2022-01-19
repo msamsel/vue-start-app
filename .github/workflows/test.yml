@@ -1,11 +1,9 @@
 name: Test
 
-on: push
+on:
+  workflow_call:
 
 jobs:
-  setup:
-    uses: msamsel/vue-start-app/.github/workflows/setup.yml@master
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
