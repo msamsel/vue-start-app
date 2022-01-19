@@ -4,11 +4,9 @@ on:
   workflow_call:
 
 jobs:
-  test:
-    name: Tests
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
-    needs: setup
-
     steps:
       - name: Job ID
         run: echo '${{ github.run_id }} | ${{ github.run_number }} | ${{ github.run_attempt }}'
@@ -35,5 +33,5 @@ jobs:
       #   if: steps.restore-cache.outputs.cache-hit != 'true'
       #   run: exit 1
 
-      - name: Run lintgg
+      - name: Run lint
         run: yarn lint

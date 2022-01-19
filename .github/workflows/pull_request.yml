@@ -14,10 +14,10 @@ jobs:
     needs: setup
     uses: msamsel/vue-start-app/.github/workflows/lint.yml@master
 
-  finish:
-    name: Finish
-    runs-on: ubuntu-latest
-    needs: [test, lint]
-    steps:
-      - name: Finish
-        run: echo 'Done'
+  # finish:
+  #   name: Finish
+  #   runs-on: ubuntu-latest
+  #   needs: [test, lint]
+  #   steps:
+  #     - name: Finish
+  #       run: echo 'Done'
