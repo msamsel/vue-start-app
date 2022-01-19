@@ -5,19 +5,31 @@ on: push
 jobs:
   setup:
     uses: msamsel/vue-start-app/.github/workflows/setup.yml@master
+  
+  changes:
+    name: Changes
+    runs-on: ubuntu-latest
+    outputs:
+      linter: ${{ steps.filter.outputs.linter }}
+      test: ${{ steps.filter.outputs.test }}
+    steps:
+      - name: Filter
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            linter:
+              - 'src/**'
+            test:
+              - 'src/**'
 
   test:
-    needs: setup
+    needs: [setup, changes]
+    if: ${{ needs.changes.outputs.test == 'true' }}
     uses: msamsel/vue-start-app/.github/workflows/test.yml@master
 
-  lint:
-    needs: setup
+  linter:
+    needs: [setup, changes]
+    if: ${{ needs.changes.outputs.linter == 'true' }}
     uses: msamsel/vue-start-app/.github/workflows/lint.yml@master
 
-  # finish:
-  #   name: Finish
-  #   runs-on: ubuntu-latest
-  #   needs: [test, lint]
-  #   steps:
-  #     - name: Finish
-  #       run: echo 'Done'
