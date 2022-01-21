@@ -63,18 +63,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Restore cache
         uses: actions/cache@v2
         with:
           path: ${{ github.workspace }}/dist
           key: dist-${{ runner.os }}-${{ github.sha }}
 
+      - name: Ls
+        run: ls
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
           branch: master
-          folder: dist
-          target-folder: ${{ secrets.DEPLOY_KEY }}
+          folder: ./dist
+          target-folder: ${{ github.sha }}
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           repository-name: msamsel/vue-test
 
