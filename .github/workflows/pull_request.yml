@@ -47,9 +47,6 @@ jobs:
           path: ${{ github.workspace }}/*
           key: ${{ runner.os }}-${{ github.sha }}
 
-      # - name: Set path
-      #   run: echo "BASE_PATH=./${{ github.sha }}" >> $GITHUB_ENV
-
       - name: Build
         run: yarn build
       
@@ -76,12 +73,18 @@ jobs:
       - name: Ls
         run: ls
 
+      - name: Sanitize branch name
+        id: sanitized-name
+        uses: yeouchien/sanitize-branch-name-action@v1
+        with:
+          branch-name: ${{ github.ref_name }}
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
           branch: master
           folder: ./dist
-          target-folder: ${{ github.sha }}
+          target-folder: ${{ steps.sanitized-name.outputs.sanitized-branch-name }}
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           repository-name: msamsel/vue-test
 
