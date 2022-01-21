@@ -78,6 +78,8 @@ jobs:
       - name: Sanitize branch name
         id: sanitized-name
         uses: yeouchien/sanitize-branch-name-action@v1
+        with:
+          branch-name: ${{ github.ref_name }}
       
       - name: echo
         run: echo "${{ steps.sanitized-name.outputs.sanitized-branch-name }}"
