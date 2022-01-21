@@ -47,6 +47,9 @@ jobs:
           path: ${{ github.workspace }}/*
           key: ${{ runner.os }}-${{ github.sha }}
 
+      - name: Set path
+        run: echo "BASE_PATH=./${{ github.sha }}" >> $GITHUB_ENV
+
       - name: Build
         run: yarn build
       
