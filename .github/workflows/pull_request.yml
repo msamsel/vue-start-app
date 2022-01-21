@@ -74,8 +74,8 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
-          target-folder: ${{ secrets.GITHUB_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          target-folder: ${{ secrets.DEPLOY_KEY }}
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
           repository-name: msamsel/vue-test
 
 
