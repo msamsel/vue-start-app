@@ -14,8 +14,8 @@ jobs:
       test: ${{ steps.filter.outputs.test }}
     steps:
       - name: Checkout
-        
         uses: actions/checkout@v2
+
       - name: Filter
         uses: dorny/paths-filter@v2
         id: filter
@@ -55,3 +55,27 @@ jobs:
         with:
           path: ${{ github.workspace }}/dist
           key: dist-${{ runner.os }}-${{ github.sha }}
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/dist
+          key: dist-${{ runner.os }}-${{ github.sha }}
+          
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        with:
+          branch: gh-pages
+          folder: dist
+          target-folder: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository-name: msamsel/vue-test
+
+
