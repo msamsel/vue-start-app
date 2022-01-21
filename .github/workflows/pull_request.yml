@@ -1,6 +1,6 @@
 name: Pull request
 
-on: push
+on: pull_request
 
 jobs:
   setup:
@@ -76,9 +76,8 @@ jobs:
       - name: Sanitize branch name
         id: sanitized-name
         uses: yeouchien/sanitize-branch-name-action@v1
-        with:
-          branch-name: ${{ github.ref_name }}
-
+        
+        
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
