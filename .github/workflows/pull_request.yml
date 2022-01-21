@@ -72,14 +72,15 @@ jobs:
           path: ${{ github.workspace }}/dist
           key: dist-${{ runner.os }}-${{ github.sha }}
 
-      - name: Ls
-        run: ls
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5.1
 
       - name: Sanitize branch name
         id: sanitized-name
         uses: yeouchien/sanitize-branch-name-action@v1
         with:
-          branch-name: ${{ github.ref_name }}
+          branch-name: ${{ steps.branch-name.outputs.current_branch }}
       
       - name: echo
         run: echo "${{ steps.sanitized-name.outputs.sanitized-branch-name }}"
