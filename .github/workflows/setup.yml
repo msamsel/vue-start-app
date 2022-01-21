@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Job ID
-        run: echo '${{ github.run_id }} | ${{ github.run_number }} | ${{ github.run_attempt }}'
-
       - name: Checkout
         uses: actions/checkout@v2
 
