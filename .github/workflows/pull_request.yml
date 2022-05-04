@@ -97,6 +97,7 @@ jobs:
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v2
         with:
+          issue-number: ${{ github.event.pull_request.number }}
           body: |
             Helpful links for: ${{ github.sha }}
             - Build: (https://docplanner-phone-eu-test.s3.eu-north-1.amazonaws.com/build/${{ steps.sanitized-name.outputs.sanitized-branch-name }}/index.html)
