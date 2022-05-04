@@ -94,4 +94,10 @@ jobs:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           repository-name: msamsel/vue-test
 
-
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          body: |
+            Helpful links for: ${{ github.sha }}
+            - Build: (https://docplanner-phone-eu-test.s3.eu-north-1.amazonaws.com/build/${{ steps.sanitized-name.outputs.sanitized-branch-name }}/index.html)
+            - Storybook: (https://docplanner-phone-eu-test.s3.eu-north-1.amazonaws.com/build/${{ steps.sanitized-name.outputs.sanitized-branch-name }})/storybook/index.html)
